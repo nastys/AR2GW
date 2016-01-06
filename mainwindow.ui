@@ -30,37 +30,11 @@
     <normaloff>:/icon/1451407665-gw-installer.png</normaloff>:/icon/1451407665-gw-installer.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLineEdit" name="AR1">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>70</y>
-      <width>113</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="maxLength">
-     <number>8</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="AR2">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>70</y>
-      <width>113</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="maxLength">
-     <number>8</number>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>40</y>
+      <x>40</x>
+      <y>20</y>
       <width>65</width>
       <height>17</height>
      </rect>
@@ -72,8 +46,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>160</y>
+      <x>220</x>
+      <y>20</y>
       <width>65</width>
       <height>17</height>
      </rect>
@@ -82,56 +56,17 @@
      <string>GW code:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="GW1">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>190</y>
-      <width>113</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="maxLength">
-     <number>8</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="GW2">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>190</y>
-      <width>113</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="maxLength">
-     <number>8</number>
-    </property>
-   </widget>
    <widget class="QPushButton" name="toGW">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>120</y>
+      <x>150</x>
+      <y>250</y>
       <width>98</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>↓ to GW</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="toAR">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>120</y>
-      <width>98</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>↑ to AR</string>
+     <string>→ to GW</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -148,6 +83,26 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="AR">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>171</width>
+      <height>191</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="GW">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>50</y>
+      <width>171</width>
+      <height>191</height>
+     </rect>
     </property>
    </widget>
   </widget>

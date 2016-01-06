@@ -18,6 +18,7 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QMessageBox"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -33,14 +34,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_toGW_clicked()
 {
+    //bool ok;
+    //ui->GW1->setText(QString::number(ui->AR1->text().toUInt(&ok, 16)+335544320, 16));
+    //ui->GW2->setText(ui->AR2->text());
+    QString tmp;
+    tmp = ui->AR->document()->toPlainText();
+    QStringList tmp2=tmp.trimmed().split("\n", QString::SkipEmptyParts);
+    QString result="";
     bool ok;
-    ui->GW1->setText(QString::number(ui->AR1->text().toUInt(&ok, 16)+335544320, 16));
-    ui->GW2->setText(ui->AR2->text());
-}
+    for (int i=0; i<tmp2.count(); i++)
+    {
+        QStringList tmp3=tmp2.at(i).split(" ", QString::SkipEmptyParts);
+        int num = tmp3.at(0).toUInt(&ok, 16);
+        if(num<=629145)
+        {
+            QMessageBox::warning(this, "Warning", "This code may not work.");
+        }
+        result=result+QString(QString::number(num+335544320, 16))+" "+QString(tmp3.at(1))+"\n";
+    }
 
-void MainWindow::on_toAR_clicked()
-{
-    bool ok;
-    ui->AR1->setText(QString::number(ui->GW1->text().toUInt(&ok, 16)-335544320, 16));
-    ui->AR2->setText(ui->GW2->text());
+    ui->GW->document()->setPlainText(result.trimmed());
 }

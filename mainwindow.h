@@ -36,8 +36,6 @@ public:
 private slots:
     void on_toGW_clicked();
 
-    void on_toAR_clicked();
-
 private:
     Ui::MainWindow *ui;
 };
