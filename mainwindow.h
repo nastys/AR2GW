@@ -36,6 +36,8 @@ public:
 private slots:
     void on_toGW_clicked();
 
+    void offset_init();
+
 private:
     Ui::MainWindow *ui;
 };

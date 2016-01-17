@@ -59,9 +59,9 @@
    <widget class="QPushButton" name="toGW">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>210</x>
       <y>250</y>
-      <width>98</width>
+      <width>171</width>
       <height>27</height>
      </rect>
     </property>
@@ -102,6 +102,16 @@
       <y>50</y>
       <width>171</width>
       <height>191</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_offset">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>171</width>
+      <height>25</height>
      </rect>
     </property>
    </widget>

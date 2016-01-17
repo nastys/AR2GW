@@ -19,12 +19,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QMessageBox"
+#include "QTextStream"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    offset_init();
 }
 
 MainWindow::~MainWindow()
@@ -34,9 +36,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_toGW_clicked()
 {
-    //bool ok;
-    //ui->GW1->setText(QString::number(ui->AR1->text().toUInt(&ok, 16)+335544320, 16));
-    //ui->GW2->setText(ui->AR2->text());
     QString tmp;
     tmp = ui->AR->document()->toPlainText();
     QStringList tmp2=tmp.trimmed().split("\n", QString::SkipEmptyParts);
@@ -50,8 +49,33 @@ void MainWindow::on_toGW_clicked()
         {
             QMessageBox::warning(this, "Warning", "This code may not work.");
         }
-        result=result+QString(QString::number(num+335544320, 16))+" "+QString(tmp3.at(1))+"\n";
+        QString r1=QString::number(num+ui->cb_offset->currentData().toInt(&ok), 16);
+        if(r1.count()<8)
+        {
+            for(int i=0; i<8-r1.count(); i++)
+                r1="0"+r1;
+        }
+        result=result+QString(r1)+" "+QString(tmp3.at(1))+"\n";
     }
 
     ui->GW->document()->setPlainText(result.trimmed());
+}
+
+void MainWindow::offset_init()
+{
+    QFile file("offsets.txt");
+    if(!file.open(QIODevice::ReadOnly))
+        QMessageBox::critical(this, "Error", "Cannot open \"offsets.txt\".");
+
+    QTextStream in(&file);
+
+    QStringList tmp=in.readAll().trimmed().split("\n", QString::SkipEmptyParts);
+    QString result="";
+    for (int i=0; i<tmp.count(); i++)
+    {
+        QStringList tmp2=tmp.at(i).split(" ", QString::SkipEmptyParts);
+        ui->cb_offset->addItem(QString(tmp2.at(0)).replace("+", " "), tmp2.at(1));
+    }
+
+    file.close();
 }
